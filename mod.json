@@ -1,0 +1,38 @@
+{
+    "geode": "3.0.0",
+    "gd": {
+        "win": "2.206",
+        "android": "2.206",
+        "mac": "2.206"
+    },
+    "version": "1.0.0",
+    "id": "yourname.gd-ai-mod",
+    "name": "GD AI Mod",
+    "developer": "YourName",
+    "description": "AI-powered level designer and autonomous level-completion bot",
+    "links": {},
+    "settings": {
+        "gemini-api-key": {
+            "name": "Gemini API Key (free at aistudio.google.com)",
+            "description": "Paste your free Gemini API key here for the Level Design AI. The Level Bot requires no key.",
+            "type": "string",
+            "default": ""
+        },
+        "bot-speed": {
+            "name": "Bot Training Speed (jumps/s)",
+            "description": "How many jump actions per second the bot tries during training",
+            "type": "int",
+            "default": 30,
+            "min": 5,
+            "max": 120
+        },
+        "population-size": {
+            "name": "Bot Population Size",
+            "description": "Number of genomes the genetic algorithm uses per generation",
+            "type": "int",
+            "default": 50,
+            "min": 10,
+            "max": 200
+        }
+    }
+}
