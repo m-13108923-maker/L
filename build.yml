@@ -1,0 +1,51 @@
+name: Build Geode Mod
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:   # lets you trigger it manually from the GitHub website
+
+jobs:
+  build-android:
+    name: Build (Android ARM64)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Geode SDK
+        uses: geode-sdk/build-geode-mod/setup@main
+
+      - name: Build mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          platform: android64
+
+      - name: Upload .geode artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GDAIMod-android64
+          path: "*.geode"
+          retention-days: 30
+
+  build-android32:
+    name: Build (Android ARM32 — older phones)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Geode SDK
+        uses: geode-sdk/build-geode-mod/setup@main
+
+      - name: Build mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          platform: android32
+
+      - name: Upload .geode artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GDAIMod-android32
+          path: "*.geode"
+          retention-days: 30
